@@ -12,7 +12,7 @@ public class Question : ScriptableObject
     [SerializeField] private string[] answers = new string[4];
     [SerializeField] private int correctAnswerIndex;
 
-    public string GetQuestion()
+    public string GetQuestionText()
     {
         return questionText;
     }
@@ -22,7 +22,7 @@ public class Question : ScriptableObject
         return answers[index];
     }
 
-    private int GetCorrectAnswerIndex()
+    public int GetCorrectAnswerIndex()
     {
         return correctAnswerIndex;
     }
