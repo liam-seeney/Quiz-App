@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class QuizMain : MonoBehaviour
@@ -9,10 +10,13 @@ public class QuizMain : MonoBehaviour
     [SerializeField] private TextMeshProUGUI questionTextArea;
     [SerializeField] private List<Question> questions;
     [SerializeField] private List<GameObject> answerButtons;
+    [SerializeField] private ScoreController scoreController;
 
     private Question question;
+
     private Color selectedColor = new Color32(54, 255, 45, 255);
     private Color defaultColor = new Color32(255, 255, 255, 255);
+    private float waitTime = 1.5f;
 
     private void Start()
     {
@@ -50,6 +54,7 @@ public class QuizMain : MonoBehaviour
         {
             questionTextArea.text = "Correct!";
             SetButtonColour(index);
+            scoreController.IncrementScore();
         }
         else
         {
@@ -79,11 +84,21 @@ public class QuizMain : MonoBehaviour
 
     private IEnumerator LoadNextQuestion()
     {
-        yield return new WaitForSeconds(2f);
-        SetButtonState(true);
-        SetDefaultButtonColors();
-        GetRandomIndex();
-        SetQuestionText();
+        scoreController.DisplayScore();
+
+        if (questions.Count > 0)
+        {
+            yield return new WaitForSeconds(waitTime);
+            SetButtonState(true);
+            SetDefaultButtonColors();
+            GetRandomIndex();
+            SetQuestionText();
+        }
+        else
+        {
+            yield return new WaitForSeconds(waitTime);
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
     private void SetDefaultButtonColors()
