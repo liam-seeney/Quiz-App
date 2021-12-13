@@ -5,8 +5,6 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Question")]
 public class Question : ScriptableObject
 {
-    [SerializeField] private int questionNumber;
-
     [TextArea(5, 10)]
     [SerializeField] private string questionText;
     [SerializeField] private string[] answers = new string[4];
