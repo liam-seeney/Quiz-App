@@ -8,7 +8,7 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
 
     private int score;
-    private int scoreIncrement = 5;
+    //private int scoreIncrement = 5;
 
     public static ScoreController Instance;
 
@@ -31,7 +31,7 @@ public class ScoreController : MonoBehaviour
 
     public void IncrementScore()
     {
-        score += scoreIncrement;
+        score++;
     }
 
     public void DisplayScore()

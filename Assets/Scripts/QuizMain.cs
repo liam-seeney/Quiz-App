@@ -58,7 +58,7 @@ public class QuizMain : MonoBehaviour
         }
         else
         {
-            questionTextArea.text = $"Wrong!\n The correct answer is:\n {question.GetAnswers(question.GetCorrectAnswerIndex())}";
+            questionTextArea.text = $"Wrong!\nThe correct answer is:\n{question.GetAnswers(question.GetCorrectAnswerIndex())}";
             SetButtonColour(question.GetCorrectAnswerIndex());
         }
 
