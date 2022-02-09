@@ -8,10 +8,10 @@ using TMPro;
 public class QuizMain : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI questionTextArea;
-    [SerializeField] private List<Question> questions;
     [SerializeField] private List<GameObject> answerButtons;
     [SerializeField] private ScoreController scoreController;
 
+    //private List<Question> questionList;
     private Question question;
 
     private Color selectedColor = new Color32(54, 255, 45, 255);
@@ -26,9 +26,9 @@ public class QuizMain : MonoBehaviour
 
     private void GetRandomIndex()
     {
-        int randomIndex = Random.Range(0, questions.Count);
-        question = questions[randomIndex];
-        questions.RemoveAt(randomIndex);
+        int randomIndex = Random.Range(0, QuestionHandler.questionList.Count);
+        question = QuestionHandler.questionList[randomIndex];
+        QuestionHandler.questionList.RemoveAt(randomIndex);
     }
 
     private void SetQuestionText()
@@ -86,7 +86,7 @@ public class QuizMain : MonoBehaviour
     {
         scoreController.DisplayScore();
 
-        if (questions.Count > 0)
+        if (QuestionHandler.questionList.Count > 0)
         {
             yield return new WaitForSeconds(waitTime);
             SetButtonState(true);

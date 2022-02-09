@@ -332,7 +332,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -25, y: -25}
-  m_SizeDelta: {x: 125, y: 125}
+  m_SizeDelta: {x: 456.5651, y: 125}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &475439330
 MonoBehaviour:
@@ -388,7 +388,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -699,14 +699,6 @@ PrefabInstance:
       propertyPath: questionTextArea
       value: 
       objectReference: {fileID: 1015023685}
-    - target: {fileID: 1510199734470552457, guid: e10ccfd18225d6645accc54eadb5f325, type: 3}
-      propertyPath: questions.Array.size
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1510199734470552457, guid: e10ccfd18225d6645accc54eadb5f325, type: 3}
-      propertyPath: questions.Array.data[7]
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 1510199734470552457, guid: e10ccfd18225d6645accc54eadb5f325, type: 3}
       propertyPath: answerButtons.Array.data[0]
       value: 

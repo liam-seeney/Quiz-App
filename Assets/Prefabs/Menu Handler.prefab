@@ -43,3 +43,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb92bca28dd62d644bc5dd5620981e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  availableQuestions:
+  - {fileID: 11400000, guid: 6ff00bf482868a74c8c8a73a7bc3b47c, type: 2}
+  - {fileID: 11400000, guid: e153cbd926dcf424a8fba384ef52ee3b, type: 2}
+  - {fileID: 11400000, guid: ae753a1bf52b56d4085c1180aca4972b, type: 2}
+  - {fileID: 11400000, guid: f1882908e35cfa6408c3075f39cbaa01, type: 2}
+  - {fileID: 11400000, guid: 685c8a63e64730240948f9b72c4e1c48, type: 2}
+  - {fileID: 11400000, guid: 7726dd7fa0b21954eba980b1150ec90f, type: 2}
+  - {fileID: 11400000, guid: 89babef1422cb5b4aa8b6ebe11d393cb, type: 2}
+  - {fileID: 11400000, guid: df47e25ed98d1a14995d560505aff869, type: 2}

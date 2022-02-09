@@ -1,13 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuController : MonoBehaviour
 {
+    public static event Action gameLoaded;
+
     public void LoadGame()
     {
+        gameLoaded?.Invoke();
         SceneManager.LoadScene("Main");
     }
 

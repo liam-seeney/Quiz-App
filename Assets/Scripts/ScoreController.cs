@@ -36,6 +36,6 @@ public class ScoreController : MonoBehaviour
 
     public void DisplayScore()
     {
-        scoreText.text = score.ToString();
+        scoreText.text = $"Score: {score}";
     }
 }
