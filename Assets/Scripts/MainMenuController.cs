@@ -7,9 +7,17 @@ public class MainMenuController : MonoBehaviour
 {
     public static event Action gameLoaded;
 
+    private ScoreController scoreController;
+
+    private void Start()
+    {
+        scoreController = FindObjectOfType<ScoreController>();
+    }
+
     public void LoadGame()
     {
         gameLoaded?.Invoke();
+        Destroy(scoreController);
         SceneManager.LoadScene("Main");
     }
 

@@ -5,8 +5,9 @@ using System.Collections.Generic;
 public class QuestionHandler : MonoBehaviour
 {
     [SerializeField] private List<Question> availableQuestions;
+    [SerializeField] private List<Question> gameQuestions = new List<Question>();
 
-    private List<Question> gameQuestions = new List<Question>();
+    private int gameLength = 5;
     private System.Random rand = new System.Random();
 
     public static QuestionHandler Instance;
@@ -43,11 +44,16 @@ public class QuestionHandler : MonoBehaviour
     private void CreateQuestionPool()
     {
         int randomIndex;
-        while (gameQuestions.Count < 5)
         {
-            randomIndex = rand.Next(1, availableQuestions.Count);
-            gameQuestions.Add(availableQuestions[randomIndex]);
-            availableQuestions.RemoveAt(randomIndex);
+            do
+            {
+                randomIndex = rand.Next(1, availableQuestions.Count);
+                if (!gameQuestions.Contains(availableQuestions[randomIndex]))
+                {
+                    gameQuestions.Add(availableQuestions[randomIndex]);
+                }
+            }
+            while (gameQuestions.Count < gameLength);
         }
     }
 }
