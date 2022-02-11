@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,16 +8,28 @@ using TMPro;
 
 public class QuizMain : MonoBehaviour
 {
+    public static event Action<bool> hasAnswered;
+
     [SerializeField] private TextMeshProUGUI questionTextArea;
     [SerializeField] private List<GameObject> answerButtons;
     [SerializeField] private ScoreController scoreController;
 
-    //private List<Question> questionList;
     private Question question;
 
     private Color selectedColor = new Color32(54, 255, 45, 255);
     private Color defaultColor = new Color32(255, 255, 255, 255);
     private float waitTime = 1.5f;
+    private System.Random random = new System.Random();
+
+    private void OnEnable()
+    {
+        TimerController.timeRanOut += outOfTime;
+    }
+
+    private void OnDisable()
+    {
+        TimerController.timeRanOut -= outOfTime;
+    }
 
     private void Start()
     {
@@ -26,7 +39,7 @@ public class QuizMain : MonoBehaviour
 
     private void GetRandomIndex()
     {
-        int randomIndex = Random.Range(0, QuestionHandler.questionList.Count);
+        int randomIndex = UnityEngine.Random.Range(0, QuestionHandler.questionList.Count);
         question = QuestionHandler.questionList[randomIndex];
         QuestionHandler.questionList.RemoveAt(randomIndex);
     }
@@ -65,6 +78,14 @@ public class QuizMain : MonoBehaviour
         StartCoroutine(LoadNextQuestion());
     }
 
+    private void outOfTime()
+    {
+        SetButtonState(false);
+        questionTextArea.text = $"Times Up!\nThe correct answer is:\n{question.GetAnswers(question.GetCorrectAnswerIndex())}";
+        SetButtonColour(question.GetCorrectAnswerIndex());
+        StartCoroutine(LoadNextQuestion());
+    }
+
     private void SetButtonColour(int index)
     {
         Image button = answerButtons[index].GetComponent<Image>();
@@ -93,6 +114,7 @@ public class QuizMain : MonoBehaviour
             SetDefaultButtonColors();
             GetRandomIndex();
             SetQuestionText();
+            hasAnswered?.Invoke(true);
         }
         else
         {

@@ -531,6 +531,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 44e06e3fee42b154896f9b5c0baee13c, type: 2}
   - {fileID: 11400000, guid: 8c1fc7e8b3b95ed4e8e9e1bb12f5258f, type: 2}
   - {fileID: 11400000, guid: 9f62cd397e97a6847b4ec22bbe215a69, type: 2}
+  gameQuestions: []
 --- !u!4 &1293540104
 Transform:
   m_ObjectHideFlags: 0
