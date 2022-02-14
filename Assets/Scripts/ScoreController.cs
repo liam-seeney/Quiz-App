@@ -8,9 +8,15 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI scoreText;
 
     private int score;
-    //private int scoreIncrement = 5;
+    private int scoreMultiplier;
+    private int scoreIncrement = 5;
 
     public static ScoreController Instance;
+
+    private void OnEnable()
+    {
+        TimerController.TimeRemaining += ScoreMultiplier;
+    }
 
     private void Awake()
     {
@@ -31,9 +37,14 @@ public class ScoreController : MonoBehaviour
 
     public void IncrementScore()
     {
-        score++;
+        score += scoreIncrement * scoreMultiplier;
     }
 
+    private void ScoreMultiplier(float timeRemaining)
+    {
+        int multiplier = (int)Mathf.Round(timeRemaining);
+        scoreMultiplier = multiplier;
+    }
     public void DisplayScore()
     {
         scoreText.text = $"Score: {score}";

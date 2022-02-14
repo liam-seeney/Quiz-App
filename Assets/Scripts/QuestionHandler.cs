@@ -7,7 +7,7 @@ public class QuestionHandler : MonoBehaviour
     [SerializeField] private List<Question> availableQuestions;
     [SerializeField] private List<Question> gameQuestions = new List<Question>();
 
-    private int gameLength = 5;
+    private int gameLength = 7;
     private System.Random rand = new System.Random();
 
     public static QuestionHandler Instance;

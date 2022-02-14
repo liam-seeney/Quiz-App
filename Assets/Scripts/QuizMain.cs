@@ -9,6 +9,7 @@ using TMPro;
 public class QuizMain : MonoBehaviour
 {
     public static event Action<bool> hasAnswered;
+    public static event Action stopTheTimer;
 
     [SerializeField] private TextMeshProUGUI questionTextArea;
     [SerializeField] private List<GameObject> answerButtons;
@@ -23,12 +24,12 @@ public class QuizMain : MonoBehaviour
 
     private void OnEnable()
     {
-        TimerController.timeRanOut += outOfTime;
+        TimerController.TimeRanOut += outOfTime;
     }
 
     private void OnDisable()
     {
-        TimerController.timeRanOut -= outOfTime;
+        TimerController.TimeRanOut -= outOfTime;
     }
 
     private void Start()
@@ -61,6 +62,7 @@ public class QuizMain : MonoBehaviour
 
     public void AnswerSelected(int index)
     {
+        stopTheTimer?.Invoke();
         SetButtonState(false);
 
         if (index == question.GetCorrectAnswerIndex())
