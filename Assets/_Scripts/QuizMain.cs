@@ -10,15 +10,21 @@ public class QuizMain : MonoBehaviour
 {
     public static event Action<bool> hasAnswered;
     public static event Action stopTheTimer;
+    public static event Action buttonPressed;
 
     [SerializeField] private TextMeshProUGUI questionTextArea;
     [SerializeField] private List<GameObject> answerButtons;
+    [SerializeField] private Image textBackground;
     [SerializeField] private ScoreController scoreController;
 
-    private Question question;
+    private Color selectedColour = new Color32(54, 255, 45, 255);
+    private Color incorrectColour = new Color32(255, 45, 45, 255);
+    private Color defaultColour = new Color32(255, 255, 255, 255);
+    private Color correctTextColour = new Color32(54, 255, 45, 255);
+    private Color incorrectTextColour = new Color32(255, 45, 45, 255);
+    private Color defaultTextColour = new Color32(209, 209, 209, 255);
 
-    private Color selectedColor = new Color32(54, 255, 45, 255);
-    private Color defaultColor = new Color32(255, 255, 255, 255);
+    private Question question;
     private float waitTime = 1.5f;
     private System.Random random = new System.Random();
 
@@ -62,6 +68,7 @@ public class QuizMain : MonoBehaviour
 
     public void AnswerSelected(int index)
     {
+        buttonPressed?.Invoke();
         stopTheTimer?.Invoke();
         SetButtonState(false);
 
@@ -69,15 +76,27 @@ public class QuizMain : MonoBehaviour
         {
             questionTextArea.text = "Correct!";
             SetButtonColour(index);
+            SetTextBackgroundColourCorrect();
             scoreController.IncrementScore();
         }
         else
         {
             questionTextArea.text = $"Wrong!\nThe correct answer is:\n{question.GetAnswers(question.GetCorrectAnswerIndex())}";
-            SetButtonColour(question.GetCorrectAnswerIndex());
+            SetButtonIncorrectColour(index);
+            SetTextBackgroundWrongColour();
         }
 
         StartCoroutine(LoadNextQuestion());
+    }
+
+    private void SetTextBackgroundWrongColour()
+    {
+        textBackground.color = incorrectTextColour;
+    }
+
+    private void SetTextBackgroundColourCorrect()
+    {
+        textBackground.color = correctTextColour;
     }
 
     private void outOfTime()
@@ -91,7 +110,13 @@ public class QuizMain : MonoBehaviour
     private void SetButtonColour(int index)
     {
         Image button = answerButtons[index].GetComponent<Image>();
-        button.color = selectedColor;
+        button.color = selectedColour;
+    }
+
+    private void SetButtonIncorrectColour(int index)
+    {
+        Image button = answerButtons[index].GetComponent<Image>();
+        button.color = incorrectColour;
     }
 
     private void SetButtonState(bool state)
@@ -114,6 +139,7 @@ public class QuizMain : MonoBehaviour
             yield return new WaitForSeconds(waitTime);
             SetButtonState(true);
             SetDefaultButtonColors();
+            SetDefaultTextColour();
             GetRandomIndex();
             SetQuestionText();
             hasAnswered?.Invoke(true);
@@ -125,12 +151,17 @@ public class QuizMain : MonoBehaviour
         }
     }
 
+    private void SetDefaultTextColour()
+    {
+        textBackground.color = defaultTextColour;
+    }
+
     private void SetDefaultButtonColors()
     {
         for (int i = 0; i < answerButtons.Count; i++)
         {
             Image buttonImage = answerButtons[i].GetComponent<Image>();
-            buttonImage.color = defaultColor;
+            buttonImage.color = defaultColour;
         }
     }
 }

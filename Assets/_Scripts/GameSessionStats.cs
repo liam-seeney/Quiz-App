@@ -4,7 +4,6 @@ using UnityEngine;
 public class GameSessionStats
 {
     public int bestScore;
-    //private int bestScore;
 
     public GameSessionStats(ScoreController currentGameScores)
     {

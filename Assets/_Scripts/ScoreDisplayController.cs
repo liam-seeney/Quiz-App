@@ -3,31 +3,32 @@ using UnityEngine;
 
 public class ScoreDisplayController : MonoBehaviour
 {
-    private int currentScore;
-    private int bestScore;
+    private int _currentScore;
+    private int _bestScore;
 
-    private ScoreController scoreController;
+    private ScoreController _scoreController;
     [SerializeField] private TextMeshProUGUI gameOverTextField;
     [SerializeField] private TextMeshProUGUI bestScoreTextField;
 
     private void Start()
     {
-        scoreController = FindObjectOfType<ScoreController>();
-        currentScore = scoreController.GetScore();
+        _scoreController = FindObjectOfType<ScoreController>();
+        _currentScore = _scoreController.GetScore();
         LoadGameData();
         DisplayScore();
-        SaveGame(scoreController);
+        SaveGame(_scoreController);
     }
 
     private void LoadGameData()
     {
         GameSessionStats currentGame = SaveController.LoadGameData();
-        bestScore = currentGame.bestScore;
+        if (currentGame == null) return;
+        _bestScore = currentGame.bestScore;
     }
 
     private void SaveGame(ScoreController scoreController)
     {
-        if (currentScore > bestScore)
+        if (_currentScore > _bestScore)
         {
             SaveController.SaveGameData(scoreController);
         }
@@ -35,7 +36,7 @@ public class ScoreDisplayController : MonoBehaviour
 
     private void DisplayScore()
     {
-        gameOverTextField.text = $"Your score for this round was: {currentScore}";
-        bestScoreTextField.text = $"Best Score: {bestScore}";
+        gameOverTextField.text = $"Your score for this round was: {_currentScore}";
+        bestScoreTextField.text = $"Best Score: {_bestScore}";
     }
 }

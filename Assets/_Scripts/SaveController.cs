@@ -1,13 +1,15 @@
-using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using UnityEngine;
 
 public class SaveController
 {
+    private const string _fileExtension = "/player.data";
+
     public static void SaveGameData(ScoreController currentGameScore)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Application.persistentDataPath + "/player.data";
+        string path = Application.persistentDataPath + _fileExtension;
         FileStream stream = new FileStream(path, FileMode.Create);
 
         GameSessionStats data = new GameSessionStats(currentGameScore);
@@ -18,7 +20,7 @@ public class SaveController
 
     public static GameSessionStats LoadGameData()
     {
-        string path = Application.persistentDataPath + "/player.data";
+        string path = Application.persistentDataPath + _fileExtension;
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -31,7 +33,7 @@ public class SaveController
         }
         else
         {
-            Debug.LogError("No file found at path" + path);
+            Debug.LogError("No file found at path " + path);
             return null;
         }
     }

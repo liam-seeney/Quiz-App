@@ -9,7 +9,7 @@ public class ScoreController : MonoBehaviour
 
     private int score;
     private int scoreMultiplier;
-    private int scoreIncrement = 5;
+    private int scoreIncrement = 7;
 
     public static ScoreController Instance;
 
@@ -28,6 +28,11 @@ public class ScoreController : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+
+    public void SetScore(int scoreToSet)
+    {
+        score = scoreToSet;
     }
 
     public int GetScore()
