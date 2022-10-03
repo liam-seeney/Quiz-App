@@ -9,7 +9,7 @@ public class TimerController : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI timerText;
 
-    [SerializeField] private float timer = 7.8f;
+    [SerializeField] private float timer = 8.2f;
     private bool isAnswering = true;
 
     private void OnEnable()

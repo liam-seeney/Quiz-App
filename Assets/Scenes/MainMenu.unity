@@ -260,6 +260,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -326,6 +327,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -420,6 +422,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2019738236}
   - {fileID: 2144369198}
@@ -523,6 +526,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -584,7 +588,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2006daacb311e4544bef234e65539885, type: 2}
   - {fileID: 11400000, guid: 4b54db43433b4614689baa82486641fb, type: 2}
   - {fileID: 11400000, guid: 5dfeeeee0f5009442b570967cbb9739a, type: 2}
-  - {fileID: 11400000, guid: cf9e45a86e66ae841ac75411c844c206, type: 2}
+  - {fileID: 11400000, guid: b05d0eeafa808d24599018876c147eac, type: 2}
+  - {fileID: 11400000, guid: 0b11382cdea698247bcbfe65065f6d3a, type: 2}
+  - {fileID: 11400000, guid: aef9b4d180775774ebc209af07cdcfd7, type: 2}
+  - {fileID: 11400000, guid: f163fcf372b0dfb4d825e3b9cb6df341, type: 2}
+  - {fileID: 11400000, guid: 6f6219ba018789d4b8cb943bec806415, type: 2}
+  - {fileID: 11400000, guid: d0092907e2521e94fae93e5c85536737, type: 2}
+  - {fileID: 11400000, guid: 341c6a3245fe3954bbabf52f82a79198, type: 2}
+  - {fileID: 11400000, guid: 33276a3f4c36a2848b6f7d00f605e16a, type: 2}
+  - {fileID: 11400000, guid: 5aae5c13837684d499d5f205e52eabb2, type: 2}
+  - {fileID: 11400000, guid: 075859d5a99217545a22d454c5dcd689, type: 2}
   gameQuestions: []
 --- !u!4 &1293540104
 Transform:
@@ -596,6 +609,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -638,6 +652,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 818039440}
   m_RootOrder: 1
@@ -692,6 +707,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 818039440}
     m_Modifications:
+    - target: {fileID: 286472022042685027, guid: a4587938f9a32ad4cb6b9a247e7c1004, type: 3}
+      propertyPath: m_Name
+      value: Settings Button Text
+      objectReference: {fileID: 0}
     - target: {fileID: 286472022042685037, guid: a4587938f9a32ad4cb6b9a247e7c1004, type: 3}
       propertyPath: m_text
       value: Settings

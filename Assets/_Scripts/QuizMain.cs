@@ -17,11 +17,11 @@ public class QuizMain : MonoBehaviour
     [SerializeField] private Image textBackground;
     [SerializeField] private ScoreController scoreController;
 
-    private Color selectedColour = new Color32(54, 255, 45, 255);
-    private Color incorrectColour = new Color32(255, 45, 45, 255);
+    private Color selectedColour = new Color32(54, 255, 45, 145);
+    private Color incorrectColour = new Color32(255, 45, 45, 145);
     private Color defaultColour = new Color32(255, 255, 255, 255);
-    private Color correctTextColour = new Color32(54, 255, 45, 255);
-    private Color incorrectTextColour = new Color32(255, 45, 45, 255);
+    private Color correctTextColour = new Color32(54, 255, 45, 145);
+    private Color incorrectTextColour = new Color32(255, 45, 45, 145);
     private Color defaultTextColour = new Color32(209, 209, 209, 255);
 
     private Question question;
@@ -75,7 +75,7 @@ public class QuizMain : MonoBehaviour
         if (index == question.GetCorrectAnswerIndex())
         {
             questionTextArea.text = "Correct!";
-            SetButtonColour(index);
+            SetButtonCorrectColour(index);
             SetTextBackgroundColourCorrect();
             scoreController.IncrementScore();
         }
@@ -103,11 +103,11 @@ public class QuizMain : MonoBehaviour
     {
         SetButtonState(false);
         questionTextArea.text = $"Times Up!\nThe correct answer is:\n{question.GetAnswers(question.GetCorrectAnswerIndex())}";
-        SetButtonColour(question.GetCorrectAnswerIndex());
+        SetButtonCorrectColour(question.GetCorrectAnswerIndex());
         StartCoroutine(LoadNextQuestion());
     }
 
-    private void SetButtonColour(int index)
+    private void SetButtonCorrectColour(int index)
     {
         Image button = answerButtons[index].GetComponent<Image>();
         button.color = selectedColour;
